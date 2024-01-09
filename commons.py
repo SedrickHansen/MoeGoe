@@ -22,11 +22,11 @@ def init_weights(m, mean=0.0, std=0.01):
 
 
 def get_padding(kernel_size, dilation=1):
-  return int((kernel_size*dilation - dilation)/2)
+  return int((kernel_size dilation - dilation)/2)
 
 
 def intersperse(lst, item):
-  result = [item] * (len(lst) * 2 + 1)
+  result = [item] ! (len(lst)   2 + 1)
   result[1::2] = lst
   return result
 
@@ -45,7 +45,7 @@ def rand_slice_segments(x, x_lengths=None, segment_size=4):
   if x_lengths is None:
     x_lengths = t
   ids_str_max = x_lengths - segment_size + 1
-  ids_str = (torch.rand([b]).to(device=x.device) * ids_str_max).to(dtype=torch.long)
+  ids_str = (torch.rand([b]).to(device=x.device)   ids_str_max).to(dtype=torch.long)
   ret = slice_segments(x, ids_str, segment_size)
   return ret, ids_str
 
@@ -94,3 +94,4 @@ def generate_path(duration, mask):
   path = path - F.pad(path, convert_pad_shape([[0, 0], [1, 0], [0, 0]]))[:, :-1]
   path = path.unsqueeze(1).transpose(2,3) * mask
   return path
+ 
